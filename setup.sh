@@ -36,9 +36,3 @@ EOL
 echo "Adding files to git and committing..."
 git add .
 git commit -m "Initial commit with project structure and code"
-
-echo "Building Docker image..."
-docker build -t yourimagename .
-
-echo "Running Docker container..."
-docker run -it --env-file .env yourimagename
