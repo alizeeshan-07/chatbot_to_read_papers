@@ -63,3 +63,30 @@ Dockerfile         — Docker build instructions
 .env               — Environment variables (not committed)  
 papers/            — Directory where paper info is saved  
 ```
+## Summary Workflow
+
+1. **User Input:**  
+   User types a query in the chatbot prompt (e.g., "Find papers on federated learning").
+
+2. **Send Query to Claude:**  
+   The query, along with the description of available tools, is sent to the Anthropic Claude API.
+
+3. **Claude Response:**  
+   Claude processes the query and decides whether it can answer directly or needs to call an external tool.
+
+4. **Tool Invocation:**  
+   - If a tool is required (e.g., `search_papers`), Claude returns a request specifying the tool and input arguments.  
+   - The chatbot runs the corresponding Python function locally.
+
+5. **Return Tool Results:**  
+   The output from the tool function is sent back to Claude as part of the conversation context.
+
+6. **Final Response:**  
+   Claude generates the final answer based on the tool output and returns it to the user.
+
+7. **Repeat:**  
+   The chatbot waits for the next user query until the user types 'quit' to exit.
+
+---
+
+This workflow enables the chatbot to dynamically leverage external Python functions for up-to-date and detailed information retrieval.
